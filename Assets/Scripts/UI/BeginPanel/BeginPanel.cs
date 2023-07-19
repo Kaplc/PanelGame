@@ -24,7 +24,7 @@ public class BeginPanel : BasePanel<BeginPanel>
         //设置按钮
         btnSetting.onClick.Add(new EventDelegate(() =>
         {
-            
+            SettingPanel.Instance.Show();
         }));
         //退出按钮
         btnQuit.onClick.Add(new EventDelegate(() =>

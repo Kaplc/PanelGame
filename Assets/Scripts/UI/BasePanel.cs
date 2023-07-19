@@ -6,8 +6,8 @@ using UnityEngine;
 
 public abstract class BasePanel<T> : MonoBehaviour where T : class
 {
-    private T instance;
-    public T Instance => instance;
+    private static T instance;
+    public static T Instance => instance;
     
     protected virtual void Awake()
     {
