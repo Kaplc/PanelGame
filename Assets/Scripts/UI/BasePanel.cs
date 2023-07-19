@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BasePanel<T> : MonoBehaviour where T : class
+public abstract class BasePanel<T> : MonoBehaviour where T : class
 {
     private T instance;
     public T Instance => instance;
@@ -20,10 +20,8 @@ public class BasePanel<T> : MonoBehaviour where T : class
         Init();
     }
 
-    public virtual void Init()
-    {
-        
-    }
+    public abstract void Init();
+    
 
     public virtual void Show()
     {
