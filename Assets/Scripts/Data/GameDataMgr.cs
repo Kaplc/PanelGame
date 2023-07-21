@@ -8,19 +8,30 @@ public class GameDataMgr
     public static GameDataMgr Instance => instance;
 
     public MusicData musicData;
+    public RankData rankData;
     
     private GameDataMgr()
     {
         // 初始化读取数据
         musicData = XmlDataManager.Instance.Load(typeof(MusicData), "musicData.xml") as MusicData;
+        rankData = XmlDataManager.Instance.Load(typeof(RankData), "rankData.xml") as RankData;
     }
+
+    #region 保存数据
 
     public void SaveMusicData()
     {
         XmlDataManager.Instance.Save(musicData, "musicData.xml");
     }
 
-    #region 音效修改
+    public void SaveRankData()
+    {
+        XmlDataManager.Instance.Save(rankData, "rankData.xml");
+    }
+
+    #endregion
+    
+    #region 音效相关
     // 音乐开关
     public void ChangeMusicOpen(bool isOpen)
     {
@@ -43,5 +54,25 @@ public class GameDataMgr
     }
 
     #endregion
-    
+
+    #region 排行榜相关
+
+    public void AddRankInfo(string name, int time)
+    {
+        RankInfo rankInfo = new RankInfo(name, time);
+        rankData.rankInfos.Add(rankInfo);
+        
+        // 排序, 时间久的在前面返回-1
+        rankData.rankInfos.Sort((a,b) => a.time > b.time ? -1 : 1);
+        
+        // 剔除20名以外
+        if (rankData.rankInfos.Count > 20)
+        {
+            rankData.rankInfos.RemoveAt(20);
+        }
+        
+        SaveRankData();
+    }
+
+    #endregion
 }
