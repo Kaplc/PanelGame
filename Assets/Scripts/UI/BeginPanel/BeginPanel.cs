@@ -19,7 +19,7 @@ public class BeginPanel : BasePanel<BeginPanel>
         //排行榜按钮
         btnRank.onClick.Add(new EventDelegate(() =>
         {
-            
+            RankPanel.Instance.Show();
         }));
         //设置按钮
         btnSetting.onClick.Add(new EventDelegate(() =>
