@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlaneData>
+    <planeInfos>
+        <PlaneInfo hp="5" speed="5" volume="5" resPath="Prefabs/Plane/Airplane1" scale="10"/>
+        <PlaneInfo hp="4" speed="6" volume="3" resPath="Prefabs/Plane/Airplane2" scale="10"/>
+        <PlaneInfo hp="3" speed="7" volume="2" resPath="Prefabs/Plane/Airplane3" scale="10"/>
+        <PlaneInfo hp="10" speed="3" volume="8" resPath="Prefabs/Plane/Airplane4" scale="4"/>
+        <PlaneInfo hp="6" speed="4" volume="4" resPath="Prefabs/Plane/Airplane5" scale="8"/>
+    </planeInfos>
+</PlaneData>

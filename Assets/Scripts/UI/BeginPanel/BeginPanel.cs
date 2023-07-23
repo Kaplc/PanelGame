@@ -14,7 +14,8 @@ public class BeginPanel : BasePanel<BeginPanel>
         //开始按钮
         btnStart.onClick.Add(new EventDelegate(() =>
         {
-            
+            ChoosePanel.Instance.Show();
+            Hide();
         }));
         //排行榜按钮
         btnRank.onClick.Add(new EventDelegate(() =>
