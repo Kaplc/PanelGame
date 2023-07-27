@@ -15,10 +15,6 @@ public class RankPanel : BasePanel<RankPanel>
         btnClose.onClick.Add(new EventDelegate(() => { Hide(); }));
 
         Hide();
-        for (int i = 0; i < 10; i++)
-        {
-            GameDataMgr.Instance.rankData.rankInfos.Add(new RankInfo("123", 1));
-        }
     }
 
     public override void Show()
