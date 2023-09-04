@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private static Player instance;
+    public static Player Instance => instance;
+    
     public int hp;
     public int maxHp;
 
@@ -11,11 +15,16 @@ public class Player : MonoBehaviour
     private Vector3 oldPos;
     private Vector3 newPos;
     public Camera playerCamera;
-    
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        // print(Application.persistentDataPath);
         Move();
     }
 
