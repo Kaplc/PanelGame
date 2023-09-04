@@ -9,14 +9,9 @@ public class Bullet : MonoBehaviour
     public int type;
     public float forwardSpeed;
     public float rightSpeed;
-    public int lifeTime;
+    public float lifeTime;
 
     public float time;
-
-    private void Awake()
-    {
-        Init(GameDataMgr.Instance.bulletData.bulletInfos[7]);
-    }
 
     public void Init(BulletInfo info)
     {
@@ -25,23 +20,24 @@ public class Bullet : MonoBehaviour
         forwardSpeed = info.forwardSpeed;
         rightSpeed = info.rightSpeed;
         lifeTime = info.lifeTime;
+        Invoke("BulletDestroy", lifeTime);
     }
 
-    public void Destroy()
+    public void BulletDestroy()
     {
-        // 爆炸特效
-        GameObject destroyObj = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/WoundEff"), transform.position, transform.rotation);
-        Destroy(destroyObj, 2);
         // 子弹销毁
         Destroy(gameObject);
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<Player>().Wound(1);
-            Destroy();
+            // 爆炸特效
+            GameObject destroyObj = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/WoundEff"), transform.position, transform.rotation);
+            Destroy(destroyObj, 2);
+            BulletDestroy();
         }
     }
 

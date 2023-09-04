@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BulletData>
     <bulletInfos>
-        <BulletInfo id="0" type="1" forwardSpeed="50" rightSpeed="0" lifeTime="8"/>
-        <BulletInfo id="1" type="2" forwardSpeed="10" rightSpeed="50" lifeTime="8"/>
-        <BulletInfo id="2" type="2" forwardSpeed="10" rightSpeed="50" lifeTime="8"/>
-        <BulletInfo id="3" type="3" forwardSpeed="20" rightSpeed="10" lifeTime="8"/>
-        <BulletInfo id="4" type="3" forwardSpeed="20" rightSpeed="10" lifeTime="8"/>
-        <BulletInfo id="5" type="4" forwardSpeed="30" rightSpeed="10" lifeTime="8"/>
-        <BulletInfo id="6" type="4" forwardSpeed="20" rightSpeed="10" lifeTime="8"/>
-        <BulletInfo id="7" type="5" forwardSpeed="30" rightSpeed="10" lifeTime="8"/>
+        <BulletInfo id="0" type="1" forwardSpeed="50" rightSpeed="0" lifeTime="8" resPath="Prefabs/Bullet/Bullet1"/>
+        <BulletInfo id="1" type="2" forwardSpeed="10" rightSpeed="50" lifeTime="8" resPath="Prefabs/Bullet/Bullet2"/>
+        <BulletInfo id="2" type="2" forwardSpeed="10" rightSpeed="50" lifeTime="8" resPath="Prefabs/Bullet/Bullet2"/>
+        <BulletInfo id="3" type="3" forwardSpeed="20" rightSpeed="10" lifeTime="8" resPath="Prefabs/Bullet/Bullet3"/>
+        <BulletInfo id="4" type="3" forwardSpeed="20" rightSpeed="10" lifeTime="8" resPath="Prefabs/Bullet/Bullet3"/>
+        <BulletInfo id="5" type="4" forwardSpeed="30" rightSpeed="10" lifeTime="8" resPath="Prefabs/Bullet/Bullet3"/>
+        <BulletInfo id="6" type="4" forwardSpeed="20" rightSpeed="10" lifeTime="8" resPath="Prefabs/Bullet/Bullet3"/>
+        <BulletInfo id="7" type="5" forwardSpeed="30" rightSpeed="10" lifeTime="8" resPath="Prefabs/Bullet/Bullet4"/>
     </bulletInfos>
 </BulletData>

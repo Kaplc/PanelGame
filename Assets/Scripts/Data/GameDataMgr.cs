@@ -11,6 +11,7 @@ public class GameDataMgr
     public RankData rankData;
     public PlaneData planeData;
     public BulletData bulletData;
+    public FireData fireData;
     
     public int modelIndex = 0; // 当前选择的model
 
@@ -21,6 +22,7 @@ public class GameDataMgr
         rankData = XmlDataManager.Instance.Load(typeof(RankData), "rankData.xml") as RankData;
         planeData = XmlDataManager.Instance.Load(typeof(PlaneData), "planeData.xml") as PlaneData;
         bulletData = XmlDataManager.Instance.Load(typeof(BulletData), "bulletData.xml") as BulletData;
+        fireData = XmlDataManager.Instance.Load(typeof(FireData), "fireData.xml") as FireData;
     }
 
     #region 保存数据

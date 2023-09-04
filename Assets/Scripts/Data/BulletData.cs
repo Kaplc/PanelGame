@@ -10,14 +10,10 @@ public class BulletData
 
 public class BulletInfo
 {
-    [XmlAttribute]
-    public int id;
-    [XmlAttribute]
-    public int type;
-    [XmlAttribute]
-    public float forwardSpeed;
-    [XmlAttribute]
-    public float rightSpeed;
-    [XmlAttribute]
-    public int lifeTime;
+    [XmlAttribute] public int id;
+    [XmlAttribute] public int type;
+    [XmlAttribute] public float forwardSpeed;
+    [XmlAttribute] public float rightSpeed;
+    [XmlAttribute] public int lifeTime;
+    [XmlAttribute] public string resPath;
 }

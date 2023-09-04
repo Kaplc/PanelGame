@@ -10,14 +10,9 @@ public class PlaneData
 
 public class PlaneInfo
 {
-    [XmlAttribute]
-    public int hp;
-    [XmlAttribute]
-    public int speed;
-    [XmlAttribute]
-    public int volume;
-    [XmlAttribute]
-    public string resPath; // 资源路径
-    [XmlAttribute]
-    public float scale; // 缩放
+    [XmlAttribute] public int hp;
+    [XmlAttribute] public int speed;
+    [XmlAttribute] public int volume;
+    [XmlAttribute] public string resPath; // 资源路径
+    [XmlAttribute] public float scale; // 缩放
 }
