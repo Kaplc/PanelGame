@@ -20,12 +20,22 @@ public class Bullet : MonoBehaviour
         forwardSpeed = info.forwardSpeed;
         rightSpeed = info.rightSpeed;
         lifeTime = info.lifeTime;
-        Invoke("BulletDestroy", lifeTime);
+        Invoke(nameof(NoEffDestroy), lifeTime); // Invoke判空
     }
 
     public void BulletDestroy()
     {
+        // 爆炸特效
+        GameObject destroyObj = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/WoundEff"), transform.position, transform.rotation);
+        Destroy(destroyObj, 2);
+        
         // 子弹销毁
+        Destroy(gameObject);
+    }
+    
+    // 无特效销毁
+    public void NoEffDestroy()
+    {
         Destroy(gameObject);
     }
     
@@ -34,9 +44,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<Player>().Wound(1);
-            // 爆炸特效
-            GameObject destroyObj = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/WoundEff"), transform.position, transform.rotation);
-            Destroy(destroyObj, 2);
+            
             BulletDestroy();
         }
     }

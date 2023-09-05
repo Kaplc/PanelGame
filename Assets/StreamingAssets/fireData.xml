@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <FireData>
     <fireInfos>
-        <FireInfo id="0" type="1" bulletCount="5" bulletCd="1" fireCd="3"/>
-        <FireInfo id="1" type="2" bulletCount="5" bulletCd="0" fireCd="1"/>
-        <FireInfo id="2" type="3" bulletCount="5" bulletCd="1" fireCd="1"/>
+        <FireInfo id="0" type="1" bulletCount="5" bulletCd="1.5" fireCd="5"/>
+        <FireInfo id="1" type="2" bulletCount="5" bulletCd="1" fireCd="5"/>
+        <FireInfo id="2" type="3" bulletCount="5" bulletCd="2" fireCd="5"/>
     </fireInfos>
 </FireData>

@@ -24,8 +24,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // print(Application.persistentDataPath);
         Move();
+        
+        // 射线检测
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hit, 1000, 1<<LayerMask.NameToLayer("Bullet")))
+            {
+                hit.transform.GetComponent<Bullet>().BulletDestroy(); // 点击销毁子弹
+            }
+        }
+        
     }
 
 

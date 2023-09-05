@@ -21,7 +21,7 @@ public enum E_FirePos
 public class FirePos : MonoBehaviour
 {
     public E_FirePos type;
-    public Camera camera;
+    public new Camera camera;
     public Vector3 pos;
     public Vector3 defaultDir;
     private List<BulletInfo> bulletInfos;
@@ -96,11 +96,11 @@ public class FirePos : MonoBehaviour
     public void ResetFireInfo()
     {
         // 随机子弹信息
-        // bulletInfo = bulletInfos[Random.Range(0, bulletInfos.Count)];
-        bulletInfo = bulletInfos[0];
+        bulletInfo = bulletInfos[Random.Range(0, bulletInfos.Count)];
+
         // 随机发射信息
-        // fireInfo = fireInfos[Random.Range(0, fireInfos.Count)];
-        fireInfo = fireInfos[0];
+        fireInfo = fireInfos[Random.Range(0, fireInfos.Count)];
+
         // 重置cd
         nowBulletCd = fireInfo.bulletCd;
         nowFireCd = fireInfo.fireCd;
@@ -118,17 +118,79 @@ public class FirePos : MonoBehaviour
                 bullet = Instantiate(Resources.Load<GameObject>(bulletInfo.resPath), transform.position,
                     Quaternion.LookRotation(Player.Instance.transform.position - transform.position));
                 bullet.AddComponent<Bullet>().Init(bulletInfo);
+
+                nowBulletCount--;
                 break;
             // 瞬发散弹
             case 2:
+                // 跳过发射跟踪散弹
+                if (bulletInfo.type == 5)
+                {
+                    nowBulletCount = 0;
+                    nowBulletCd = 0;
+                    break;
+                }
+                
+                for (int i = 0; i < nowBulletCount; i++)
+                {
+                    switch (type)
+                    {
+                        case E_FirePos.Top:
+                        case E_FirePos.Left:
+                        case E_FirePos.Right:
+                        case E_FirePos.Bottom:
+                            // 四边发射范围180度
+                            bullet = Instantiate(Resources.Load<GameObject>(bulletInfo.resPath), transform.position,
+                                Quaternion.AngleAxis(180f / (fireInfo.bulletCount + 1) * (i + 1), Vector3.up) *
+                                Quaternion.LookRotation(defaultDir));
+                            bullet.AddComponent<Bullet>().Init(bulletInfo);
 
+                            break;
+                        case E_FirePos.LeftTop:
+                        case E_FirePos.RightTop:
+                        case E_FirePos.BottomLeft:
+                        case E_FirePos.BottomRight:
+                            // 死角发射范围90度
+                            bullet = Instantiate(Resources.Load<GameObject>(bulletInfo.resPath), transform.position,
+                                Quaternion.AngleAxis(90f / (fireInfo.bulletCount + 1) * (i + 1), Vector3.up) * Quaternion.LookRotation(defaultDir));
+                            bullet.AddComponent<Bullet>().Init(bulletInfo);
+                            break;
+                    }
+                }
+
+                nowBulletCount = 0;
+                nowBulletCd = 0;
                 break;
             // 顺序散弹
             case 3:
+                
+                switch (type)
+                {
+                    case E_FirePos.Top:
+                    case E_FirePos.Left:
+                    case E_FirePos.Right:
+                    case E_FirePos.Bottom:
+                        // 四边发射范围180度
+                        bullet = Instantiate(Resources.Load<GameObject>(bulletInfo.resPath), transform.position,
+                            Quaternion.AngleAxis(180f / (fireInfo.bulletCount + 1) * nowBulletCount, Vector3.up) *
+                            Quaternion.LookRotation(defaultDir));
+                        bullet.AddComponent<Bullet>().Init(bulletInfo);
+
+                        break;
+                    case E_FirePos.LeftTop:
+                    case E_FirePos.RightTop:
+                    case E_FirePos.BottomLeft:
+                    case E_FirePos.BottomRight:
+                        // 死角发射范围90度
+                        bullet = Instantiate(Resources.Load<GameObject>(bulletInfo.resPath), transform.position,
+                            Quaternion.AngleAxis(90f / (fireInfo.bulletCount + 1) * nowBulletCount, Vector3.up) * Quaternion.LookRotation(defaultDir));
+                        bullet.AddComponent<Bullet>().Init(bulletInfo);
+                        break;
+                }
+                
+                nowBulletCount--;
                 break;
         }
-
-        nowBulletCount--;
     }
 
     // Update is called once per frame
