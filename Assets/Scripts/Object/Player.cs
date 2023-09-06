@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     public void Dead()
     {
         // 飞机摧毁特效
-        Destroy(Instantiate(Resources.Load<GameObject>("Prefabs/Effect/DestoryEff")), 1);
+        Destroy(Instantiate(Resources.Load<GameObject>("Prefabs/Effect/DestoryEff"), transform.position, transform.rotation), 1);
         EndPanel.Instance.Show();
         
         Main.player = null;
