@@ -41,7 +41,12 @@ public class Player : MonoBehaviour
 
     public void Dead()
     {
+        // 飞机摧毁特效
+        Destroy(Instantiate(Resources.Load<GameObject>("Prefabs/Effect/DestoryEff")), 1);
         EndPanel.Instance.Show();
+        
+        Main.player = null;
+        Destroy(gameObject);
     }
 
     public void Wound(int value)

@@ -10,7 +10,7 @@ public class GamePanel : BasePanel<GamePanel>
     public List<GameObject> hpList;
 
     public float time;
-    
+
     public override void Init()
     {
         btnClose.onClick.Add(new EventDelegate(() =>
@@ -18,21 +18,31 @@ public class GamePanel : BasePanel<GamePanel>
             QuitPanel.Instance.Show();
             Time.timeScale = 0;
         }));
-        UpdateHp(50);
+        UpdateHp(Player.Instance.maxHp);
     }
 
     private void Update()
     {
-        time += Time.deltaTime;
-        // 更新时间
-        lbSeconds.text = (int)time + "s";
+        if (Main.player)
+        {
+            time += Time.deltaTime;
+            // 更新时间
+            lbSeconds.text = (int)time + "s";
+        }
+        
     }
-
+    
     public void UpdateHp(int hp)
     {
-        for (int i = 0; i < hp/10; i++)
+        
+        for (int i = 0; i < hp; i++)
         {
             hpList[i].SetActive(true);
+        }
+
+        for (int i = hp; i < 10; i++)
+        {
+            hpList[i].SetActive(false);
         }
     }
 }

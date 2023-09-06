@@ -28,23 +28,23 @@ public class Bullet : MonoBehaviour
         // 爆炸特效
         GameObject destroyObj = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/WoundEff"), transform.position, transform.rotation);
         Destroy(destroyObj, 2);
-        
+
         // 子弹销毁
         Destroy(gameObject);
     }
-    
+
     // 无特效销毁
     public void NoEffDestroy()
     {
         Destroy(gameObject);
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<Player>().Wound(1);
-            
+
             BulletDestroy();
         }
     }
@@ -53,10 +53,10 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        
+
         // 向前移动
         gameObject.transform.Translate(Vector3.forward * (forwardSpeed * Time.deltaTime));
-        
+
         // 分类型侧向移动
         switch (type)
         {
@@ -74,8 +74,13 @@ public class Bullet : MonoBehaviour
                 break;
             case 5:
                 // 跟踪
-                gameObject.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Player.Instance.transform.position- transform.position),
-                    Time.deltaTime * rightSpeed);
+                if (Main.player) // 判断玩家是否存在
+                {
+                    gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,
+                        Quaternion.LookRotation(Player.Instance.transform.position - transform.position),
+                        Time.deltaTime * rightSpeed);
+                }
+
                 break;
         }
     }

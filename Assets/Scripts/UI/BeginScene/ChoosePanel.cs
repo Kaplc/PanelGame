@@ -52,12 +52,11 @@ public class ChoosePanel : BasePanel<ChoosePanel>
 
             ShowModel();
         }));
+        
         btnStart.onClick.Add(new EventDelegate(() =>
         {
             SceneManager.LoadScene("GameScenes");
         }));
-
-
         Hide();
     }
 
@@ -116,7 +115,7 @@ public class ChoosePanel : BasePanel<ChoosePanel>
         {
             //按下鼠标
             // 发送射线碰撞到物体返回true
-            if (Physics.Raycast(uiCamera.ScreenPointToRay(Input.mousePosition), 1000, 1 << LayerMask.NameToLayer("UI")))
+            if (Physics.Raycast(uiCamera.ScreenPointToRay(Input.mousePosition), 1000, 1 << LayerMask.NameToLayer("Player")))
             {
                 isSel = true;
             }

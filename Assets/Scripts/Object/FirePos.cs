@@ -109,6 +109,11 @@ public class FirePos : MonoBehaviour
 
     public void Fire()
     {
+        if (!Main.player)
+        {
+            return;
+        }
+        
         GameObject bullet;
 
         switch (fireInfo.type)
